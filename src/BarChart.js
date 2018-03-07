@@ -1,28 +1,46 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Bar from './svg/Bar';
-import Chart from './svg/Chart';
+import DivBar from './div/Bar';
+import DivChart from './div/Chart';
+import CanvasBar from './canvas/Bar';
+import CanvasChart from './canvas/Chart';
+import SVGBar from './svg/Bar';
+import SVGChart from './svg/Chart';
 
 const BAR_SPACING = 2;
 
-class ChartContainer extends Component {
+const sources = {
+  div: { Bar: DivBar, Chart: DivChart },
+  svg: { Bar: SVGBar, Chart: SVGChart },
+  canvas: { Bar: CanvasBar, Chart: CanvasChart }
+};
+
+class BarChart extends Component {
   static propTypes = {
-    width: PropTypes.number
+    height: PropTypes.number,
+    width: PropTypes.number,
+    data: PropTypes.array,
+    max: PropTypes.number,
+    barHeight: PropTypes.number,
+    type: PropTypes.string
   };
   static defaultProps = {
     width: 400,
     height: 400,
     data: [],
     max: 100,
-    barHeight: 30
+    barHeight: 30,
+    type: 'div'
   };
   render() {
+    const { Chart, Bar } = sources[this.props.type];
     return (
       <div className="chart-container">
-        <div className="chart-title">SVG</div>
+        <div className="chart-title">{this.props.type}</div>
         <div className="bar-labels">
           {this.props.data.map((item, index) => (
             <div
+              key={index}
               className="bar-label"
               style={{ height: this.props.barHeight }}>
                 {item.name}
@@ -49,4 +67,4 @@ class ChartContainer extends Component {
   }
 }
 
-export default ChartContainer;
+export default BarChart;

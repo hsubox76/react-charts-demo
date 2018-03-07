@@ -4,6 +4,10 @@ body {
   font-family: sans-serif;
   font-size: 16px;
 }
+button {
+  margin: 20px;
+  font-size: 1.3rem;
+}
 .chart-title {
   font-size: 1.3rem;
   width: 80px;
@@ -12,6 +16,8 @@ body {
 .chart-container {
   display: flex;
   margin: 20px;
+  border: 1px solid #ccc;
+  padding: 5px;
 }
 
 .bar-labels {
