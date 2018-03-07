@@ -29,9 +29,9 @@ class PageOfCharts extends Component {
         <button onClick={this.incrementEarth}>
             more earth
         </button>
-        <CanvasChart data={this.state.data} height={140} />
         <DivChart data={this.state.data} height={140} />
         <SVGChart data={this.state.data} height={140} />
+        <CanvasChart data={this.state.data} height={140} />
       </div>
     );
   }

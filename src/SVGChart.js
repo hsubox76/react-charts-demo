@@ -18,7 +18,8 @@ class ChartContainer extends Component {
   };
   render() {
     return (
-      <div className="bar-chart-canvas">
+      <div className="chart-container">
+        <div className="chart-title">SVG</div>
         <div className="bar-labels">
           {this.props.data.map((item, index) => (
             <div
