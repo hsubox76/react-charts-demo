@@ -1,0 +1,19 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+.bar-chart-canvas {
+  display: flex;
+  margin: 20px;
+}
+
+.bar-labels {
+  margin-right: 10px;
+}
+
+.bar-label {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
