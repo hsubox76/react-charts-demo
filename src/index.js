@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import PageOfCharts from './PageOfCharts';
+import DemoHome from './DemoHome';
 
-ReactDOM.render(<PageOfCharts />, document.getElementById('root'));
+ReactDOM.render(<DemoHome />, document.getElementById('root'));

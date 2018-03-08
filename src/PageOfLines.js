@@ -1,13 +1,6 @@
 import React, { Component } from 'react';
-import BarChart from './BarChart';
 import LineChart from './LineChart';
 
-const initialData = [
-  { name: 'earth', value: 50, color: '#efc94c' },
-  { name: 'wind', value: 70, color: '#45b29d' },
-  { name: 'fire', value: 90, color: '#e27a3f' },
-  { name: 'water', value: 30, color: '#334d5c' },
-];
 const initialLineData = [
   [0, 4],
   [1, 10],
@@ -17,11 +10,10 @@ const initialLineData = [
   [5, 7]
 ];
 
-class PageOfCharts extends Component {
+class PageOfLines extends Component {
   constructor() {
     super();
     this.state = {
-      data: initialData,
       lineData: initialLineData
     }
   }
@@ -37,9 +29,6 @@ class PageOfCharts extends Component {
         <button onClick={this.incrementEarth}>
             more earth
         </button>
-        <BarChart type="div" data={this.state.data} height={140} />
-        <BarChart type="svg" data={this.state.data} height={140} />
-        <BarChart type="canvas" data={this.state.data} height={140} />
         <LineChart type="svg" data={this.state.lineData} height={140} />
         <LineChart type="canvas" data={this.state.lineData} height={140} />
       </div>
@@ -47,4 +36,4 @@ class PageOfCharts extends Component {
   }
 }
 
-export default PageOfCharts;
+export default PageOfLines;
