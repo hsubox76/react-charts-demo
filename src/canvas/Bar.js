@@ -20,7 +20,12 @@ class Bar extends Component {
   render() {
     if (this.props.ctx) {
       this.props.ctx.fillStyle = this.props.color;
-      this.props.ctx.fillRect(this.props.x, this.props.y, this.props.width, this.props.height);
+      this.props.ctx.fillRect(
+        this.props.x,
+        this.props.y,
+        this.props.width,
+        this.props.height
+      );
     }
     return null;
   }

@@ -9,9 +9,9 @@ const LEFT_WIDTH = 200;
 const RIGHT_WIDTH = 300;
 
 const CANVAS_WIDTH = 150;
-const CANVAS_HEIGHT = 400;
+const CANVAS_HEIGHT = 480;
 
-const MAX_BARS_IN_ZOOM = 15;
+const MAX_BARS_IN_ZOOM = 20;
 
 function generateBar(index) {
   const zip = 94500 + index;
@@ -31,7 +31,7 @@ function generateData(barCount) {
 class Minimap extends Component {
   constructor() {
     super();
-    const data = generateData(100);
+    const data = generateData(1000);
     this.state = {
       data,
       window: {
