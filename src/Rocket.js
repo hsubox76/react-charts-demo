@@ -49,14 +49,14 @@ class PageOfLines extends Component {
               </clipPath>
             </defs>
             <g transform={`translate(0,${IMG_HEIGHT - paid - pledged})`}>
-              <text alignment-baseline="hanging" font-size="36px" fill="#69a">pledged</text>
+              <text alignmentBaseline="hanging" fontSize="36px" fill="#69a">pledged</text>
             </g>
             <g transform={`translate(0,${IMG_HEIGHT - paid})`}>
-              <text alignment-baseline="hanging" font-size="36px" fill="#638">paid</text>
+              <text alignmentBaseline="hanging" fontSize="36px" fill="#638">paid</text>
             </g>
             <path d={rocketPath} fill="#bbb" />
-            <path d={rocketPath} fill="#638" clip-path="url(#paid)"/>
-            <path d={rocketPath} clip-path="url(#pledged)" fill="#69a" />
+            <path d={rocketPath} fill="#638" clipPath="url(#paid)"/>
+            <path d={rocketPath} clipPath="url(#pledged)" fill="#69a" />
           </svg>
         </div>
       </div>

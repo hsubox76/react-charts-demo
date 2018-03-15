@@ -18,7 +18,6 @@ class PageOfLines extends Component {
     }
   }
   incrementEarth = () => {
-    const newPoint = [this.state.lineData[0], this.state.lineData[1] + 5];
     this.setState({
       lineData: this.state.lineData.map(point => [point[0], point[1] + Math.random() * 5 - 2.5])
     });

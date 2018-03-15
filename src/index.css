@@ -32,6 +32,10 @@ body {
   font-size: 1.3rem;
 }
 
+.minimap-container {
+  display: flex;
+}
+
 .bar-labels {
   margin-right: 10px;
 }
@@ -40,4 +44,77 @@ body {
   display: flex;
   align-items: center;
   justify-content: flex-end;
+}
+
+.bars-map {
+  margin: 0 10px;
+}
+
+.bars-zoom {
+  display: flex;
+  background-color: #333;
+  width: 600px;
+  justify-content: center;
+  padding: 10px;
+}
+
+.bar-zoom {
+  height: 20px;
+  margin-bottom: 2px;
+  background-color: #45b29d;
+  display: flex;
+  align-items: center;
+}
+
+.bars-zoom-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 20px;
+  padding: 5px;
+  background-color: #777;
+  color: #fff;
+  margin-bottom: 5px;
+  cursor: pointer;
+}
+
+.bars-zoom-header:hover {
+  background-color: #999;
+}
+
+.bar-left {
+  background-color: #45b29d;
+  justify-content: flex-end;
+  padding-right: 5px;
+}
+
+.bar-right {
+  background-color: #e27a3f;
+  justify-content: flex-start;
+  padding-left: 5px;
+}
+
+.bars-zoom-left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.bars-zoom-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.bars-zoom-middle {
+  padding: 0 10px;
+}
+
+.zip-label {
+  height: 20px;
+  margin-bottom: 2px;
+  color: #cef;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
