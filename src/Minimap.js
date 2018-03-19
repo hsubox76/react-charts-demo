@@ -13,6 +13,9 @@ const CANVAS_HEIGHT = 480;
 
 const MAX_BARS_IN_ZOOM = 20;
 
+const NAV_CONTAINER_HEIGHT = 70;
+const TOOLTIP_OFFSET = 10;
+
 function generateBar(index) {
   const zip = 94500 + index;
   const tempVal = TEMP_MIN + Math.random() * (TEMP_MAX - TEMP_MIN);
@@ -38,7 +41,8 @@ class Minimap extends Component {
         top: 0,
         height: MAX_BARS_IN_ZOOM * CANVAS_HEIGHT / data.length
       },
-      sortDirection: 1
+      sortDirection: 1,
+      tooltip: null
     }
   }
 
@@ -166,12 +170,35 @@ class Minimap extends Component {
     });
   }
 
+  onBarHover = (e, bar) => {
+    this.setState({
+      tooltip: {
+        x: e.clientX + TOOLTIP_OFFSET,
+        y: e.clientY - NAV_CONTAINER_HEIGHT + TOOLTIP_OFFSET,
+        data: bar
+      }
+    });
+  }
+
+  onBarLeave = () => {
+    this.setState({
+      tooltip: null
+    });
+  }
+
   render() {
     if (this.ctx) {
       this.drawCanvas();
     }
     const topBar = Math.floor(this.state.window.top / (CANVAS_HEIGHT / this.state.data.length));
     const zoomedBars = this.state.data.slice(topBar, topBar + MAX_BARS_IN_ZOOM);
+    const tooltip = this.state.tooltip && (
+      <div className="tooltip" style={{ top: this.state.tooltip.y, left: this.state.tooltip.x }}>
+        <div>Zip code: {this.state.tooltip.data.zip}</div>
+        <div>Saw {Math.round(this.state.tooltip.data.rain)} inches of rain last year</div>
+        <div>Had an average temperature of {Math.round(this.state.tooltip.data.temp)}F</div>
+      </div>
+    );
     return (
       <div className="charts-container minimap-container">
         <div className="bars-map">
@@ -186,7 +213,12 @@ class Minimap extends Component {
           <div className="bars-zoom-left" style={{ width: LEFT_WIDTH }}>
             <div className="bars-zoom-header" onClick={() => this.sort('rain')}>rain(inches)</div>
             {zoomedBars.map(bar => (
-              <div key={'L' + bar.zip} className="bar-zoom bar-left" style={{ width: LEFT_WIDTH * bar.rain / RAIN_MAX }}>
+              <div
+                key={'L' + bar.zip} className="bar-zoom bar-left"
+                style={{ width: LEFT_WIDTH * bar.rain / RAIN_MAX }}
+                onMouseEnter={(e) => this.onBarHover(e, bar)}
+                onMouseLeave={this.onBarLeave}
+              >
                 {Math.round(bar.rain)}
               </div>
             ))}
@@ -194,18 +226,32 @@ class Minimap extends Component {
           <div className="bars-zoom-middle">
             <div className="bars-zoom-header" onClick={() => this.sort('zip')}>zip code</div>
             {zoomedBars.map(bar => (
-              <div key={bar.zip} className="zip-label">{bar.zip}</div>
+              <div
+                key={bar.zip}
+                className="zip-label"
+                onMouseEnter={(e) => this.onBarHover(e, bar)}
+                onMouseLeave={this.onBarLeave}
+              >
+                {bar.zip}
+              </div>
             ))}
           </div>
           <div className="bars-zoom-right" style={{ width: RIGHT_WIDTH }}>
             <div className="bars-zoom-header" onClick={() => this.sort('temp')}>temperature(F)</div>
             {zoomedBars.map(bar => (
-              <div key={'R' + bar.zip} className="bar-zoom bar-right" style={{ width: RIGHT_WIDTH * bar.temp / TEMP_MAX }}>
+              <div
+                key={'R' + bar.zip}
+                className="bar-zoom bar-right"
+                style={{ width: RIGHT_WIDTH * bar.temp / TEMP_MAX }}
+                onMouseEnter={(e) => this.onBarHover(e, bar)}
+                onMouseLeave={this.onBarLeave}
+              >
                 {Math.round(bar.temp)}
               </div>
             ))}
           </div>
         </div>
+        {tooltip}
       </div>
     );
   }
