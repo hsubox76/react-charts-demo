@@ -34,7 +34,7 @@ function generateData(barCount) {
 class Minimap extends Component {
   constructor() {
     super();
-    const data = generateData(300);
+    const data = generateData(5000);
     this.state = {
       data,
       window: {

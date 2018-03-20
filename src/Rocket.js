@@ -56,7 +56,7 @@ class PageOfLines extends Component {
             </g>
             <path d={rocketPath} fill="#bbb" />
             <path d={rocketPath} fill="#638" clipPath="url(#paid)"/>
-            <path d={rocketPath} clipPath="url(#pledged)" fill="#69a" />
+            <path d={rocketPath} fill="#69a" clipPath="url(#pledged)" />
           </svg>
         </div>
       </div>
