@@ -25,6 +25,9 @@ class DemoHome extends Component {
           <button href='#' onClick={() => this.navTo('rocket')}>rocket</button>
           <button href='#' onClick={() => this.navTo('minimap')}>minimap</button>
         </div>
+        <a className="repo-link" href="https://github.com/hsubox76/react-charts-demo">
+          https://github.com/hsubox76/react-charts-demo
+        </a>
         {this.state.page === 'bars' && <PageOfBars />}
         {this.state.page === 'lines' && <PageOfLines />}
         {this.state.page === 'rocket' && <Rocket />}

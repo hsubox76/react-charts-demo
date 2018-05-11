@@ -16,6 +16,13 @@ body {
   color: #37a;
   cursor: pointer;
 }
+.repo-link {
+  display: block;
+  padding: 10px;
+  margin: 10px 20px;
+  font-size: 20px;
+  border: 1px solid grey;
+}
 .chart-title {
   font-size: 1.3rem;
   width: 80px;
